@@ -12,10 +12,8 @@ public class BulletSpawner : MonoBehaviour
     public bool isRandom;
 
     public float cooldown;
-    public float cooldown2;
 
     float timer;
-    float timer2;
 
     public float bulletSpeed;
     public Vector2 bulletVelocity;
@@ -25,7 +23,6 @@ public class BulletSpawner : MonoBehaviour
     void Start()
     {
         timer = cooldown;
-        timer2 = cooldown2;
         rotations = new float[numberOfBullets];
         if (!isRandom)
         {
@@ -46,13 +43,6 @@ public class BulletSpawner : MonoBehaviour
             timer = cooldown;
         }
 
-        if (timer2 <= 0)
-        {
-            numberOfBullets++;
-            timer2 = cooldown2;
-        }
-
-        timer2 -= Time.deltaTime;
         timer -= Time.deltaTime;
     }
 
