@@ -9,17 +9,21 @@ public class BulletSpawner : MonoBehaviour
     public float minRotation;
     public float maxRotation;
     public int numberOfBullets;
+    public int numberOfBullets2;
     public bool isRandom;
 
     public float cooldown;
+    public float cooldown2;
 
     float timer;
+    float timer2;
 
     public float bulletSpeed;
     public Vector2 bulletVelocity;
 
 
     float[] rotations;
+
     void Start()
     {
         timer = cooldown;
@@ -39,10 +43,17 @@ public class BulletSpawner : MonoBehaviour
     {
         if (timer <= 0)
         {
-            SpawnBullets();
             timer = cooldown;
         }
 
+        if (timer2 <= 0)
+        {
+            numberOfBullets2 = numberOfBullets2 + 1;
+            SpawnBullets();
+            timer2 = cooldown2;
+        }
+
+        timer2 -= Time.deltaTime;
         timer -= Time.deltaTime;
     }
 
@@ -76,12 +87,18 @@ public class BulletSpawner : MonoBehaviour
         {
             // This is in Update because we want a random rotation for each bullet each time
             RandomRotations();
+
+            if (true)
+            {
+                // numberOfBullets = numberOfBullets2;
+                // var difference = b.speed;
+            }
         }
 
 
         // Spawn Bullets
         GameObject[] spawnedBullets = new GameObject[numberOfBullets];
-        for (int i = 0; i < numberOfBullets; i++)
+        for (int i = 0; i < numberOfBullets2; i++)
         {
             spawnedBullets[i] = Instantiate(bulletResource, transform);
 
