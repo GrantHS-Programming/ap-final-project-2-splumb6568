@@ -99,7 +99,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   speed: 6
   rotation: -180
-  lifeTime: 5
+  lifeTime: 10
   type: 
   timer: 0
 --- !u!58 &7200114848975593555
